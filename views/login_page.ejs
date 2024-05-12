@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            /*background-image: linear-gradient(rgb(0,0,50,0.8),rgb(0,0,50,0.8)), url(Images/background-image.jpg);*/
+            background-size: cover;
+            position: relative;
+        }
+
+        .form-box {
+            width: 800px;
+            height: 500px;
+            max-width: 450px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 50px 60px 70px;
+            text-align: center;
+            border-style: solid;
+            border-width: 2px;
+        }
+
+        .ID-field {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .password-field {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .u-name,
+        .p-word {
+            margin-left: 3px;
+        }
+
+        .u-name {
+            margin-bottom: 20px;
+            width: 300px;
+            margin-left: 20px;
+            height: 35px;
+
+        }
+
+        .topic {
+            vertical-align: top;
+        }
+
+        .p-word {
+            margin-bottom: 20px;
+            width: 300px;
+            margin-left: 20px;
+            height: 35px;
+        }
+
+        .login-btn {
+            margin-top: 20px;
+            margin-bottom: 60px;
+            width: 100px;
+            height: 40px;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 2px;
+            margin-left: 55px;
+            font-size: 20px;
+
+        }
+
+        .p-word,
+        .u-name {
+            border-style: solid;
+            border-width: 2px;
+            border-color: gray;
+            border-radius: 2px;
+        }
+
+        .u-p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .error{
+
+            color: red;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-image: linear-gradient(rgb(0, 0, 50, 0.5), rgb(0, 0, 50, 0.5)), url(Images/tree.jpg);
+            background-size: cover;
+            transition: background-image 1s ease;
+        }
+
+        .container:hover {
+            background-image: linear-gradient(rgb(0, 0, 50, 0.5), rgb(0, 0, 50, 0.5)), url(Images/admin_background.jpg);
+        }
+
+        .fpass {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .c-link {
+            text-decoration: rgb(214, 214, 248);
+        }
+    </style>
+    <!-- <link rel="stylesheet" href=""> -->
+    <script src="https://kit.fontawesome.com/cc8bcff6f3.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1 class="topic">Sign In</h1>
+            <br>
+            <form action="/submit" method="post">
+                <div>
+                    <div class="ID-field">
+                        <i class="fas fa-user"></i>
+                        <p class="u-p">Username</p><input id="uname" class="u-name" name="username" type="text"
+                            placeholder="Username">
+                    </div>
+                    <div class="password-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <p class="u-p">Password</p> <input id="pword" class="p-word" name="password" type="password"
+                            placeholder="Password">
+                    </div>
+                </div>
+                <!-- <p id="Err" class="error">Invalid username or password. Please try again.</p> -->
+                <% if (userError) { %>
+                    <p id="Err" class="error">Invalid username or password. Please try again.</p>
+                <% } %>
+            
+                <a href="">
+
+                    <button id="loginButton" value="submit" class="login-btn">
+                        Login
+                    </button>
+                </a>
+                
+                    <p class="fpass"><a href="/email">Forgot Password? Click here...</a></p>
+                
+                
+
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

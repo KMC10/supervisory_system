@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leave Requests</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f7f7f7;
+                color: #333;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 20px auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 15px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .button, .button1 {
+                padding: 10px 20px;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .button {
+                background-color: #007bff;
+            }
+
+            .button:hover {
+                background-color: #0056b3;
+            }
+
+            .button1 {
+                background-color: #ff6347;
+            }
+
+            .button1:hover {
+                background-color: #d32f2f;
+            }
+
+            button:disabled {
+                background-color: navy;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Leave Application Results</h2>
+            <table>
+                <tr>
+                    <th>leave_id</th>
+                    <th>start_date</th>
+                    <th>applied</th>
+                    <th>Results</th>
+                </tr>
+                <!-- Server-side script should generate table rows here -->
+                <% data.forEach((row) => { %>
+                <tr>
+                    <td><%= row.leave_id %></td>
+                    <td><%= row.start_date %></td>
+                    <td class="applied"><%= row.applied %></td>
+                    <td>
+                        <% if (row.Accepted === '✔') { %>
+                            <button class="button" data-leave-id="<%= row.leave_id %>">Accepted</button>
+                        <% } else if (row.Accepted === 'no') { %>
+                            <button class="button1" data-leave-id="<%= row.leave_id %>">Rejected</button>
+                        <% } else { %>
+                            <span>Pending</span>
+                        <% } %>
+                    </td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+        <script src="/leave.js"></script>
+    </body>
+</html>

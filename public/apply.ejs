@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leave Application Form</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="form-container">
+            <h2>Leave Application Form</h2>
+            <form id="leave-application-form" action="/apply" method="post">
+                <div class="form-group">
+                    <label for="start-date">Start Date:</label>
+                    <input type="date" name="start_date" id="start-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="end-date">End Date:</label>
+                    <input type="date" name="end_date" id="end-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Reason:</label>
+                    <textarea id="reason" name="reason" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="apply-btn">Apply</button>
+                </div>
+            </form>
+            <%if(sent) { %>
+                <script>
+                    // Display an alert when the success flag is true
+                    alert('Leave application successfully sent!');
+                </script>
+              <% } %>
+        </div>
+    </body>
+</html>

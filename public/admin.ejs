@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4; }
+  .container { width: 90%; margin: auto; padding: 20px; }
+  header { background: #0078d4; color: white; padding: 20px 0; text-align: center; }
+  nav { background: #005a9e; padding: 10px 0; }
+  nav ul { list-style: none; padding: 0; }
+  nav ul li { display: inline; margin-right: 20px; }
+  nav a { color: white; text-decoration: none; }
+  section { background: white; padding: 20px; margin-top: 20px; }
+  footer { background: #0078d4; color: white; text-align: center; padding: 10px 0; margin-top: 20px; }
+  .logout { float: right; }
+  form { margin-bottom: 20px; }
+  input, textarea, select { width: 100%; padding: 10px; margin: 10px 0; }
+  button { background: #0078d4; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+  button:hover { background: #005a9e; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>KMC Admin Dashboard</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#employees">Employees</a></li>
+      <li><a href="#schedule">Weekly Schedule</a></li>
+      <li><a href="#departments">Departments</a></li>
+      <li><a href="#leaves">Approve Leaves</a></li>
+      <li class="logout"><a href="/">Logout</a></li>
+    </ul>
+  </nav>
+  <section id="employees">
+    <h2>Manage Employees</h2>
+    <form action="/add" method="post">
+      <input type="text" name="id" placeholder="Employee ID" required>
+      <input type="text" name="Name" placeholder="First Name" required>
+      <input type="text" name="Surname" placeholder="Surname" required>
+      <input type="email"name="Email" placeholder="Email" required>
+      <input type="text" name="department" placeholder="department" required></input>
+      <!-- <select type="text" name="department" required></select> -->
+      <input type="tel" name="Phone" placeholder="Phone Number" required>
+      <input type="date" name="Birthday" placeholder="Birthday" required>
+      <input type="text" name="Salary" placeholder="Salary" required>
+      <textarea name="Adress" placeholder="Address" required></textarea>
+      <input type="text" name="Occupation" placeholder="Occupation" required>
+      <input type="text" name="username" placeholder="username" required>
+      <input type="text" name="isAdmin" placeholder="Admin?" required>
+        <!-- <option value="">Select Department</option> -->
+        <!-- Add department options here -->
+      <!-- </select> -->
+      <button type="submit">Add Employee</button>
+    </form>
+    <a href="/employees">
+      <button>Remove Employee</button>
+    </a>
+    
+    <%if(sent) { %>
+      <script>
+          // Display an alert when the success flag is true
+          alert('Employee Added successfully!');
+      </script>
+    <% } %>
+  </section>
+  <section id="schedule">
+    <h2>Post Weekly Schedule</h2>
+    <form>
+      <textarea placeholder="Enter weekly schedule here..." required></textarea>
+      <button type="submit">Post Schedule</button>
+    </form>
+  </section>
+  <section id="departments">
+    <h2>Manage Departments</h2>
+    <form>
+      <input type="text" placeholder="Department Name" required>
+      <button type="submit">Add Department</button>
+      <button type="button">Remove Department</button>
+    </form>
+  </section>
+  <section id="leaves">
+    <a href="/requests">
+    <button>Approve/Reject Leaves</button>
+  </a>
+    <!-- <form>
+      <input type="text" placeholder="Employee ID" required>
+      <input type="date" placeholder="Start Date" required>
+      <input type="date" placeholder="End Date" required>
+      <textarea placeholder="Reason for Leave" required></textarea>
+      <button type="submit">Approve Leave</button>
+      <button type="button">Reject Leave</button>
+    </form> -->
+  </section>
+  <footer>
+    <p>© 2024 Company Name. All rights reserved.</p>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #ff6347;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee List</h1>
+
+        <form action="/search-employee" method="GET">
+            <input type="text" name="search" placeholder="Search employees">
+            <input type="submit" value="Search">
+        </form>
+
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            <% employees.forEach((employee) => { %>
+            <tr>
+                <td><%= employee.username %></td>
+                <td><%= employee.Name %></td>
+                <td><%= employee.Email %></td>
+                <td>
+                    <form action="/delete-employee" method="POST">
+                        <input type="hidden" name="username" value="<%= employee.username %>">
+                        <input type="submit" value="Remove">
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+    </div>
+</body>
+</html>

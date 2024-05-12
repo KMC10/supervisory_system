@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your Records</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f7f7f7;
+                color: #333;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 20px auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 15px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .button, .button1 {
+                padding: 10px 20px;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .button {
+                background-color: #007bff;
+            }
+
+            .button:hover {
+                background-color: #0056b3;
+            }
+
+            .button1 {
+                background-color: #ff6347;
+            }
+
+            .button1:hover {
+                background-color: #d32f2f;
+            }
+
+            button:disabled {
+                background-color: navy;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Attendance Records</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Check-in Time</th>
+                        <th>Check-out Time</th>
+                        <th>Hours Worked</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < data.length; i++) { %>
+                    <tr>
+                        <td><%= data[i].checkin_time %></td>
+                        <td><%= data[i].checkout_time %></td>
+                        <td><%= data[i].hours_worked %></td>
+                    </tr>
+                    <% } %>
+                    <!-- Render total hours worked as the last row -->
+                    <tr>
+                        <td colspan="2">TOTAL Hours</td>
+                        <td><%= totalHoursWorked %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
