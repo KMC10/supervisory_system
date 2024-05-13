@@ -848,7 +848,7 @@ app.post('/delete-employee', (req, res) => {
 
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
-open(`http://localhost:${port}`);
+// app.listen(port, () => {
+//   console.log(`Server is listening on port ${port}`);
+// });
+// open(`http://localhost:${port}`);
