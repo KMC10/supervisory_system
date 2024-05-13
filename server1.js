@@ -105,9 +105,9 @@ handleLogin(username, password);
 
 // MySQL database connection setup
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'kunjani411021348',
+  host: 'az900.mysql.database.azure.com',
+  user: 'KMC',
+  password: 'kunjani411021348.',
   database: 'kmc_company'
 });
 
