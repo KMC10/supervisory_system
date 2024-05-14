@@ -30,7 +30,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
-const port = 5000;
+const port = 3306;
 app.set('view engine', 'ejs');
 app.set('views', 'path/to/views/directory');
 
