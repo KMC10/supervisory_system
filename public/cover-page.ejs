@@ -4,80 +4,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Home - KMC Employee Supervisory System</title>
     <script src="https://kit.fontawesome.com/cc8bcff6f3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="Styles/head-styles.css">
-    <!-- <a href="/login"></a> -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
 
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .header img {
+            height: 80px;
+            position: absolute;
+            left: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        .main {
+            margin-top: 140px;
+            padding: 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            background-color: #e3e0e0;
+            padding: 50px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1,
+        .page-header p {
+            margin: 0;
+        }
+
+        .columns {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(173, 216, 230, 0.1);
+            border-radius: 5px;
+        }
+
+        .columns img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .announcements {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .announcements h2 {
+            text-align: left;
+            margin-bottom: 10px;
+            font-size: 24px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .announcements p {
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background-color: #a6a6f6;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid #333;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer .social-buttons button {
+            background-color: transparent;
+            border: none;
+            margin-right: 20px;
+        }
+
+        .footer .social-buttons button i {
+            font-size: 30px;
+            color: #333;
+        }
+
+        .footer .social-buttons button:hover i {
+            color: #58a6ff;
+        }
+
+        .footer .contact {
+            text-align: right;
+        }
+
+        .footer .contact a {
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .footer .contact a:hover {
+            color: #58a6ff;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="first-container">
-        <img class="logo" src="Images/Technology-Company-Logo-Template.webp" alt="Logo">
-        <p class="head-txt1">
-            Home
-        </p>
-        <p class="head-txt2">
-            Events
-        </p>
-        <p >
-        <p class="head-txt3">
-            Suggestion Box
-        </p>
-        <button id="loginButton" class="log">
-            <i class="fa-solid fa-right-to-bracket" style="font-size: 40px;
-            color: white;"></i>
-         <a href="/login">Login</a>
-        </button>
+    <header class="header">
+        <img src="Images/Technology-Company-Logo-Template.webp" alt="Logo">
+        <nav class="nav-links">
+            <a href="/cover-page">Home</a>
+            <a href="banner.html">Events</a>
+            <a href="acc.html">Suggestion Box</a>
+            <a href="/login">Login</a>
+        </nav>
+    </header>
 
-    </div>
-    <div class="page-header">
-        <p class="topic-txt">Welcome to the KMC Employee Supervisory system</p>
-        <p class="topic-txt">Find information related to this system below</p>
-    </div>
-    <div class="columns">
-        <p><li>
-            Users must login into the system for relevent and person work related information
-        </li></p>
-
-        <p><li>
-           User login is different from admin login
-        </li></p>
-
-        <p><li>
-            If there are any enquiries, the concerned person can query 
-            an email to the admin from the bottom right corner
-        </li></p>
-    </div>
-    <div class="last-container">
-
-        <div class="contact-box">
-            <p class="about">Powered By: KMC Pty Ltd</p>
-            <p class="about">&copy; 2024 kmcenterprice.com. All rights Reserved</p>
-            <p class="about"></p>
+    <main class="main">
+        <div class="page-header">
+            <h1>Welcome to the KMC Employee Supervisory System</h1>
+            <p>Find information related to this system below</p>
         </div>
-        <div class="contact-btns">
-            <p class="us">Contact us:</p>
-            <button class="fb-btn">
-                <i class="fa-brands fa-square-facebook" style="font-size: 20px;"></i>
-            </button>
-            <button class="ig-btn">
-                <i class="fa-brands fa-square-instagram" style="font-size: 20px;"></i>
-            </button>
-            <button class="twit-btn">
-                <i class="fa-brands fa-twitter" style="font-size: 20px;"></i>
-            </button>
-            <button class="line-btn">
-                <i class="fa-brands fa-line" style="font-size: 20px;"></i>
-            </button>
+        <div class="columns">
+            <div>
+                <img src="6-ways-help-new-employees-mesh-well-team-B.png" alt="Team Collaboration">
+            </div>
+            <div class="announcements">
+                <h2>Announcements</h2>
+                <div id="announcementList">
+                    <!-- Announcements will be dynamically added here -->
+                </div>
+                <p>
+                    <li>User login is different from admin login</li>
+                </p>
+                <p>
+                    <li>If there are any enquiries, the concerned person can query an email to the admin from the bottom right corner</li>
+                </p>
+            </div>
         </div>
+    </main>
+
+    <footer class="footer">
         <div>
-            <p class="us-mail">Send an email to admin</p>
+            <p>Powered By: KMC Pty Ltd</p>
+            <p>&copy; 2024 kmcenterprice.com. All rights Reserved</p>
+        </div>
+        <div class="social-buttons">
+            <button class="fb-btn"><i class="fa-brands fa-square-facebook"></i></button>
+            <button class="ig-btn"><i class="fa-brands fa-square-instagram"></i></button>
+            <button class="twit-btn"><i class="fa-brands fa-twitter"></i></button>
+            <button class="line-btn"><i class="fa-brands fa-line"></i></button>
+        </div>
+        <div class="contact">
+            <p>Send an email to admin</p>
             <a href="mailto:411021348@gms.ndhu.edu.tw">Send Email</a>
         </div>
-    </div>
+    </footer>
 
-<script src="js/cover.js"></script>
+    <script src="js/cover.js"></script>
+    <script>
+        // Function to fetch announcements from the server and render them
+        async function fetchAndRenderAnnouncements() {
+            try {
+                const response = await fetch('/announcements');
+                const announcements = await response.json();
+
+                const announcementList = document.getElementById('announcementList');
+                announcementList.innerHTML = ''; // Clear existing announcements
+
+                announcements.forEach(announcement => {
+                    const announcementDiv = document.createElement('div');
+                    announcementDiv.innerHTML = `
+                        <h2>${announcement.title}</h2>
+                        <p>${announcement.content}</p>
+                    `;
+                    announcementList.appendChild(announcementDiv);
+                });
+            } catch (error) {
+                console.error('Error fetching announcements:', error);
+                alert('Failed to fetch announcements. Please try again later.');
+            }
+        }
+
+        // Call the fetchAndRenderAnnouncements function to fetch and render announcements
+        fetchAndRenderAnnouncements();
+    </script>
 </body>
 
 </html>

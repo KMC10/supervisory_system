@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Requests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .main-content h2 {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .button, .button1 {
+            padding: 10px 20px;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 4px;
+        }
+
+        .button {
+            background-color: green;
+        }
+
+        .button1 {
+            background-color: red;
+        }
+
+        .button:hover {
+            background-color: #2ecc71; /* Darker green */
+        }
+
+        .button1:hover {
+            background-color: #e74c3c; /* Darker red */
+        }
+
+        button:disabled {
+            background-color: navy;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Admin Menu</h2>
+            <ul>
+                <li><a href="/menu">Dashboard</a></li>
+                <li><a href="/manage">Employee Management</a></li>
+                <li><a href="/attendance">Attendance Records</a></li>
+                <li><a href="/announcement">Announcements</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="/requests">Leaves</a></li>
+                <li><a href="logout">Logout</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h2>Unattended Leave Requests</h2>
+            <table>
+                <tr>
+                    <th>Leave ID</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Reason</th>
+                    <th>Applied</th>
+                    <th>Accepted</th>
+                    <th>Rejected</th>
+                    <th>Action</th>
+                </tr>
+                <!-- Server-side script should generate table rows here -->
+                <% data.forEach((row) => { %>
+                <tr>
+                    <td><%= row.leave_id %></td>
+                    <td><%= row.start_date %></td>
+                    <td><%= row.end_date %></td>
+                    <td><%= row.reason %></td>
+                    <td class="applied"><%= row.applied %></td>
+                    <td class="accepted"><%= row.accepted %></td>
+                    <td class="rejected"><%= row.rejected %></td>
+                    <td>
+                        <button class="button approve-btn"
+                            data-leave-id="<%= row.leave_id %>">Approve</button>
+                        <button class="button button1 reject-btn"
+                            data-leave-id="<%= row.leave_id %>">Reject</button>
+                    </td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

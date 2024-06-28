@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Post Announcements</title>
+        <!-- <link rel="stylesheet" href="styles.css"> -->
+        <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.main-content h2 {
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: #3498db; /* Blue */
+    color: #fff;
+}
+
+button#deleteAnnouncementsButton {
+    background-color: #e74c3c; /* Red */
+    color: #fff;
+}
+
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="sidebar">
+                <h2>Admin Menu</h2>
+                <ul>
+                    <li><a href="/menu">Dashboard</a></li>
+                    <li><a href="/manage">Employee Management</a></li>
+                    <li><a href="/attendance">Attendance Records</a></li>
+                    <li><a href="/announcement">Announcements</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="/requests">Leaves</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <section id="schedule">
+                    <h2>Post Announcement(s)</h2>
+                    <form id="announcementForm" action="/announcements"
+                        method="post">
+                        <input type="text" id="announcementTitle" name="title"
+                            placeholder="Announcement Title" required><br>
+                        <textarea id="announcementContent" name="content"
+                            placeholder="Enter announcement content here..."
+                            required></textarea><br>
+                        <div class="button-container">
+                            <button type="submit">Post Announcement</button>
+                            <button id="deleteAnnouncementsButton"
+                                type="button">Delete Announcements</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+        <script>
+        // Form submission handler
+        // Remove the first event listener for form submission
+        document.getElementById('announcementForm').removeEventListener('submit', async (event) => {
+            // Your code here
+        });
+        
+        // Form submission handler for posting announcements
+        document.getElementById('announcementForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const title = document.getElementById('announcementTitle').value; // Get the value of the title input field
+            const content = document.getElementById('announcementContent').value;
+        
+            try {
+                const response = await fetch('/announcements', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ title, content }) // Use the user's input title
+                });
+        
+                if (response.ok) {
+                    alert('Announcement posted successfully!');
+                    document.getElementById('announcementTitle').value = ''; // Clear the title input field
+                    document.getElementById('announcementContent').value = ''; // Clear the content input field
+                } else {
+                    throw new Error('Failed to post announcement.');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        });
+        
+        
+        // Event listener for the "Delete Announcements" button using event delegation
+        document.addEventListener('click', async (event) => {
+            if (event.target && event.target.id === 'deleteAnnouncementsButton') {
+                try {
+                    const response = await fetch('/announcements', {
+                        method: 'DELETE'
+                    });
+        
+                    if (response.ok) {
+                        alert('Announcements deleted successfully!');
+                        // Check if the element exists before accessing its innerHTML property
+                        const announcementList = document.getElementById('announcementList');
+                        if (announcementList) {
+                            announcementList.innerHTML = ''; // Clear the announcements list
+                        }
+                    } else {
+                        throw new Error('Failed to delete announcements.');
+                    }
+                } catch (error) {
+                    alert('Error: ' + error.message);
+                }
+            }
+        });
+        
+        </script>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Supervisory and Payroll System</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  #video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    background-size: cover;
+  }
+
+  #banner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: bold;
+    animation: moveBanner 5s infinite alternate, changeColor 2s infinite;
+  }
+
+  @keyframes moveBanner {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  @keyframes changeColor {
+  0% {
+    color: #3366cc; /* Blue */
+  }
+  25% {
+    color: #33cc33; /* Green */
+  }
+  50% {
+    color: #ff9900; /* Orange */
+  }
+  75% {
+    color: #993399; /* Purple */
+  }
+  100% {
+    color: #cc0000; /* Red */
+  }
+}
+
+</style>
+</head>
+<body>
+<video id="video-background" autoplay loop muted>
+  <source src="Bubble burst Hearts - moving hearts background - heart background video - love motion background hd.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<div id="banner">Company Grand Opening Ceremony On May 24 2024</div>
+</body>
+</html>

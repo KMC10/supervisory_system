@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Employee Account</title>
+        <script src="https://kit.fontawesome.com/cc8bcff6f3.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-o+X3bCGV4JMiXa00BOIqYvB2l5g60CzfG/A9rlJ6vkkYLGi9WxlkGb62aJn+eii" crossorigin="anonymous">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                height: 100vh;
+                background-color: #f4f4f4;
+            }
+
+            .container {
+                display: flex;
+                width: 100%;
+            }
+
+            .sidebar {
+                width: 250px;
+                background-color: #2c3e50;
+                color: #ecf0f1;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .sidebar h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .sidebar ul li {
+                margin: 15px 0;
+            }
+
+            .sidebar ul li a {
+                color: #ecf0f1;
+                text-decoration: none;
+                font-size: 18px;
+            }
+
+            .sidebar ul li a:hover {
+                text-decoration: underline;
+            }
+
+            .main-content {
+                flex: 1;
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            .company-name {
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .account-owner {
+                font-size: 18px;
+            }
+
+            .logout-btn {
+                padding: 8px 16px;
+                background-color: red;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .logout-btn:hover {
+                background-color: #d32f2f;
+            }
+
+            .profile-container {
+                display: flex;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+
+            .profile-container img {
+                border-radius: 50%;
+                width: 100px;
+                height: 100px;
+                margin-right: 20px;
+            }
+
+            .profile-info {
+                flex: 1;
+            }
+
+            .profile-info h3 {
+                margin: 0 0 10px 0;
+            }
+
+            .profile-info p {
+                margin: 5px 0;
+            }
+
+            .check-in-out-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 30px;
+                gap: 20px;
+            }
+
+            .check-in-btn, .check-out-btn {
+                padding: 10px 20px;
+                font-size: 1em;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .check-in-btn {
+                background-color: green;
+                color: #fff;
+            }
+
+            .check-out-btn {
+                background-color: red;
+                color: #fff;
+            }
+
+            .check-in-btn:hover {
+                background-color: #28a745;
+            }
+
+            .check-out-btn:hover {
+                background-color: #c82333;
+            }
+
+            button:disabled {
+                background-color: navy;
+                color: white;
+            }
+
+            .check-in-btn:disabled, .check-out-btn:disabled {
+                background-color: gray;
+                color: white;
+            }
+
+            .records-container {
+                width: 100%;
+                background-color: #f9f9f9;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .card-container {
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                padding: 20px;
+                border-radius: 10px;
+                color: #fff;
+                text-align: center;
+                width: 30%;
+            }
+
+            .card.green {
+                background-color: #28a745;
+            }
+
+            .card.orange {
+                background-color: #fd7e14;
+            }
+
+            .card.red {
+                background-color: #dc3545;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="sidebar">
+                <h2>Employee Menu</h2>
+                <ul>
+                    <li><a href="/profile">Dashboard</a></li>
+                    <li><a href="/records">Attendance Records</a></li>
+                    <li><a href="#">Salary Records</a></li>
+                    <li><a href="/leave">Leave Application</a></li>
+                    <li><a href="/acc_update">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="header">
+                    <div class="company-name">KMC Enterprises</div>
+                    <div class="account-owner">
+                        <h3><%= Name %> <%= Surname %></h3>
+                        <p>Email: <%= Email %></p>
+                    </div>
+                    <div>
+                        <% if (isAdmin === 1) { %>
+                        <a href="/menu">Admin Link</a>
+                        <% } %>
+                    </div>
+                    <a href="/logout"><button id="logoutBtn" class="logout-btn">Logout</button></a>
+                </div>
+                <div class="profile-container">
+                    <img src="profile-pic-url" alt="Profile Picture">
+                </div>
+                <div class="check-in-out-container">
+                    <button id="check-in-btn" class="check-in-btn">Check In</button>
+                    <button id="check-out-btn" class="check-out-btn">Check Out</button>
+                </div>
+                <div class="records-container">
+                    <div class="card-container">
+                        <div class="card green">
+                            <h4>Early</h4>
+                            <p><%= earlyCount %></p>
+                        </div>
+                        <div class="card orange">
+                            <h4>Late</h4>
+                            <p><%= lateCount %></p>
+                        </div>
+                        <div class="card red">
+                            <h4>Absent</h4>
+                            <p><%= absentCount %></p>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const checkInBtn = document.getElementById('check-in-btn');
+                const checkOutBtn = document.getElementById('check-out-btn');
+
+                checkInBtn.addEventListener('click', () => {
+                    fetch('/checkIn', {
+                        method: 'POST'
+                    }).then(response => response.json())
+                      .then(data => {
+                          alert(data.message);
+                          checkInBtn.disabled = true;
+                          checkOutBtn.disabled = false;
+                      });
+                });
+
+                checkOutBtn.addEventListener('click', () => {
+                    fetch('/checkOut', {
+                        method: 'POST'
+                    }).then(response => response.json())
+                      .then(data => {
+                          alert(data.message);
+                          checkInBtn.disabled = false;
+                          checkOutBtn.disabled = true;
+                      });
+                });
+            });
+        </script>
+    </body>
+</html>

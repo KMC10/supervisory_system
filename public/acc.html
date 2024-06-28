@@ -1,166 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <script src="https://kit.fontawesome.com/cc8bcff6f3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="Styles/head-styles.css">
-    <!-- <a href="/login"></a> -->
-
+    <title>Main Menu</title>
+    <style>
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .card h3 {
+            margin: 0 0 10px;
+        }
+        .card p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="first-container">
-        <img class="logo" src="Images/Technology-Company-Logo-Template.webp" alt="Logo">
-        <p class="head-txt1">
-            Home
-        </p>
-        <p class="head-txt2">
-            Events
-        </p>
-        <p >
-        <p class="head-txt3">
-            Suggestion Box
-        </p>
-        <button id="loginButton" class="log">
-            <i class="fa-solid fa-right-to-bracket" style="font-size: 40px;
-            color: white;"></i>
-         <a href="/login">Login</a>
-        </button>
-
-    </div>
-    <div class="page-header">
-        <p class="topic-txt">Welcome to the KMC Employee Supervisory system</p>
-        <p class="topic-txt">Find information related to this system below</p>
-    </div>
-    <div class="columns">
-        <p><li>
-            Users must login into the system for relevant and personal work-related information
-        </li></p>
-
-        <p><li>
-           User login is different from admin login
-        </li></p>
-
-        <p><li>
-            If there are any inquiries, the concerned person can query 
-            an email to the admin from the bottom right corner
-        </li></p>
-    </div>
-    <div class="last-container">
-
-        <div class="contact-box">
-            <p class="about">Powered By: KMC Pty Ltd</p>
-            <p class="about">&copy; 2024 kmcenterprice.com. All rights Reserved</p>
-            <p class="about"></p>
-        </div>
-        <div class="contact-btns">
-            <p class="us">Contact us:</p>
-            <button class="fb-btn">
-                <i class="fa-brands fa-square-facebook" style="font-size: 20px;"></i>
-            </button>
-            <button class="ig-btn">
-                <i class="fa-brands fa-square-instagram" style="font-size: 20px;"></i>
-            </button>
-            <button class="twit-btn">
-                <i class="fa-brands fa-twitter" style="font-size: 20px;"></i>
-            </button>
-            <button class="line-btn">
-                <i class="fa-brands fa-line" style="font-size: 20px;"></i>
-            </button>
-        </div>
-        <div>
-            <p class="us-mail">Send an email to admin</p>
-            <a href="mailto:411021348@gms.ndhu.edu.tw">Send Email</a>
+    <div class="card-container">
+        <div class="card">
+            <h3><%= name %></h3>
+            <p>Late: <%= late %> days</p>
+            <p>Early: <%= early %> days</p>
+            <p>Absent: <%= absent %> days</p>
         </div>
     </div>
-
-    <script src="js/cover.js"></script>
 </body>
-
-</html>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <script src="https://kit.fontawesome.com/cc8bcff6f3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="Styles/head-styles.css">
-    <!-- <a href="/login"></a> -->
-
-</head>
-
-<body>
-    <div class="first-container">
-        <img class="logo" src="Images/Technology-Company-Logo-Template.webp" alt="Logo">
-        <p class="head-txt1">
-            Home
-        </p>
-        <p class="head-txt2">
-            Events
-        </p>
-        <p >
-        <p class="head-txt3">
-            Suggestion Box
-        </p>
-        <button id="loginButton" class="log">
-            <i class="fa-solid fa-right-to-bracket" style="font-size: 40px;
-            color: white;"></i>
-         <a href="/login">Login</a>
-        </button>
-
-    </div>
-    <div class="page-header">
-        <p class="topic-txt">Welcome to the KMC Employee Supervisory system</p>
-        <p class="topic-txt">Find information related to this system below</p>
-    </div>
-    <div class="columns">
-        <p><li>
-            Users must login into the system for relevant and personal work-related information
-        </li></p>
-
-        <p><li>
-           User login is different from admin login
-        </li></p>
-
-        <p><li>
-            If there are any inquiries, the concerned person can query 
-            an email to the admin from the bottom right corner
-        </li></p>
-    </div>
-    <div class="last-container">
-
-        <div class="contact-box">
-            <p class="about">Powered By: KMC Pty Ltd</p>
-            <p class="about">&copy; 2024 kmcenterprice.com. All rights Reserved</p>
-            <p class="about"></p>
-        </div>
-        <div class="contact-btns">
-            <p class="us">Contact us:</p>
-            <button class="fb-btn">
-                <i class="fa-brands fa-square-facebook" style="font-size: 20px;"></i>
-            </button>
-            <button class="ig-btn">
-                <i class="fa-brands fa-square-instagram" style="font-size: 20px;"></i>
-            </button>
-            <button class="twit-btn">
-                <i class="fa-brands fa-twitter" style="font-size: 20px;"></i>
-            </button>
-            <button class="line-btn">
-                <i class="fa-brands fa-line" style="font-size: 20px;"></i>
-            </button>
-        </div>
-        <div>
-            <p class="us-mail">Send an email to admin</p>
-            <a href="mailto:411021348@gms.ndhu.edu.tw">Send Email</a>
-        </div>
-    </div>
-
-    <script src="js/cover.js"></script>
-</body>
-
 </html>

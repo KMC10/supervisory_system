@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Attendance Statistics</title>
+    <!-- Add your CSS or external stylesheet links here -->
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+            display: flex;
+            width: 100%;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        
+        .main-content h1 {
+            margin-top: 0;
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 200px;
+            box-sizing: border-box;
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .card p {
+            margin: 5px 0;
+            color: #34495e;
+        }
+        
+        /* Add red background for cards with absentCount > 0 */
+        .card.absent {
+            /*background-color: red;*/
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Admin Menu</h2>
+            <ul>
+                <li><a href="/menu">Dashboard</a></li>
+                <li><a href="/manage">Employee Management</a></li>
+                <li><a href="/attendance">Attendance Records</a></li>
+                <li><a href="/announcement">Announcements</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="/requests">Leaves</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1>Attendance Statistics</h1>
+            <div class="card-container">
+                <% attendanceStats.forEach(stats => { %>
+                    <div class="card <%= stats.absentCount > 0 ? 'absent' : '' %>">
+                        <h3><%= stats.name %></h3>
+                        <p>Late: <%= stats.lateCount %> days</p>
+                        <p>Early: <%= stats.earlyCount %> days</p>
+                        <p>Absent: <%= stats.absentCount %> days</p>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

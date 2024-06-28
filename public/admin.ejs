@@ -54,34 +54,43 @@
         <!-- <option value="">Select Department</option> -->
         <!-- Add department options here -->
       <!-- </select> -->
-      <button type="submit">Add Employee</button>
+        <button type="submit">Add Employee</button>
     </form>
+    <h2>Staff Details</h2>
     <a href="/employees">
       <button>Remove Employee</button>
+    </a>
+    <a href="">
+      <button>Update Employee</button>
     </a>
     
     <%if(sent) { %>
       <script>
           // Display an alert when the success flag is true
-          alert('Employee Added successfully!');
+           alert('Employee Added successfully!');
       </script>
     <% } %>
   </section>
   <section id="schedule">
-    <h2>Post Weekly Schedule</h2>
-    <form>
-      <textarea placeholder="Enter weekly schedule here..." required></textarea>
-      <button type="submit">Post Schedule</button>
+    <h2>Post Announcement(s)</h2>
+    <form id="announcementForm" action="/announcements" method="post">
+        <input type="text" id="announcementTitle" placeholder="Announcement Title" required><br>
+        <textarea id="announcementContent" placeholder="Enter weekly schedule here..." required></textarea><br>
+        <button type="submit">Post Announcement</button>
+        <button id="deleteAnnouncementsButton" type="button">Delete Announcements</button>
     </form>
-  </section>
-  <section id="departments">
+</section>
+
+
+<div id="announcements"></div>
+  <!-- <section id="departments">
     <h2>Manage Departments</h2>
     <form>
       <input type="text" placeholder="Department Name" required>
       <button type="submit">Add Department</button>
       <button type="button">Remove Department</button>
     </form>
-  </section>
+  </section> -->
   <section id="leaves">
     <a href="/requests">
     <button>Approve/Reject Leaves</button>
@@ -99,5 +108,67 @@
     <p>© 2024 Company Name. All rights reserved.</p>
   </footer>
 </div>
+<script>
+// Form submission handler
+// Remove the first event listener for form submission
+document.getElementById('announcementForm').removeEventListener('submit', async (event) => {
+    // Your code here
+});
+
+// Form submission handler for posting announcements
+document.getElementById('announcementForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const title = document.getElementById('announcementTitle').value; // Get the value of the title input field
+    const content = document.getElementById('announcementContent').value;
+
+    try {
+        const response = await fetch('/announcements', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ title, content }) // Use the user's input title
+        });
+
+        if (response.ok) {
+            alert('Announcement posted successfully!');
+            document.getElementById('announcementTitle').value = ''; // Clear the title input field
+            document.getElementById('announcementContent').value = ''; // Clear the content input field
+        } else {
+            throw new Error('Failed to post announcement.');
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+});
+
+
+// Event listener for the "Delete Announcements" button using event delegation
+document.addEventListener('click', async (event) => {
+    if (event.target && event.target.id === 'deleteAnnouncementsButton') {
+        try {
+            const response = await fetch('/announcements', {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                alert('Announcements deleted successfully!');
+                // Check if the element exists before accessing its innerHTML property
+                const announcementList = document.getElementById('announcementList');
+                if (announcementList) {
+                    announcementList.innerHTML = ''; // Clear the announcements list
+                }
+            } else {
+                throw new Error('Failed to delete announcements.');
+            }
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+    }
+});
+
+</script>
+
+</script>
 </body>
 </html>

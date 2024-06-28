@@ -72,16 +72,31 @@
     display: inline-block;
     border-radius: 25px;
 }
+.columns {
+    display: flex;
+    /* justify-content: center; Horizontally center the child elements */
+    align-items: center; /* Vertically center the child elements */
+}
+
+.columns > div {
+    flex: 1; /* Equal width for both child divs */
+    text-align: center; /* Center content horizontally */
+    margin: 10px; /* Add margin for spacing */
+}
+
 
 .columns {
+    /* display: flex; */
+    /* flex-direction: row; */
+    justify-content: space-between;
+    
     border-width: 2px;
     border-radius: 2px;
-    background-color: rgba(173, 216, 230, 0.1);;
+    background-color: rgba(173, 216, 230, 0.1);
     height: 150px;
     margin-bottom: 20px;
     margin: 200px;
     margin-top: 50px;
-   /* margin-left: 20px;*/
 }
 .log{
     height: 50px;
@@ -157,4 +172,18 @@
 button a{
     color: white;
     text-decoration: none;
+}
+.announcementList {
+    text-align: left; /* Align all text to the left */
+}
+
+.announcementList * {
+    font-size: 20px; /* Set font size of all text to 20px */
+}
+.announcements {
+    text-align: left; /* Align all text to the left */
+}
+
+.announcements * {
+    font-size: 20px; /* Set font size of all text to 20px */
 }

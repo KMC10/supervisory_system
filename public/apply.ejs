@@ -1,31 +1,123 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Leave Application Form</title>
-        <style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Application Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-o+X3bCGV4JMiXa00BOIqYvB2l5g60CzfG/A9rlJ6vkkYLGi9WxlkGb62aJn+eii" crossorigin="anonymous">
+    <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f4f4;
         }
-        .form-container {
-            width: 50%;
-            margin: auto;
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
             padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            box-sizing: border-box;
         }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .account-owner {
+            font-size: 18px;
+        }
+
+        .logout-btn {
+            padding: 8px 16px;
+            background-color: red;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .form-container {
+            width: 100%;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
         .form-group {
             margin-bottom: 20px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 10px;
         }
-        .form-group input, .form-group textarea {
+
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            box-sizing: border-box;
         }
+
         .form-group button {
             padding: 10px 20px;
             background-color: #007BFF;
@@ -33,38 +125,66 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
+
         .form-group button:hover {
             background-color: #0056b3;
         }
+
+        .form-group button:disabled {
+            background-color: navy;
+        }
     </style>
-    </head>
-    <body>
-        <div class="form-container">
-            <h2>Leave Application Form</h2>
-            <form id="leave-application-form" action="/apply" method="post">
-                <div class="form-group">
-                    <label for="start-date">Start Date:</label>
-                    <input type="date" name="start_date" id="start-date" required>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Employee Menu</h2>
+            <ul>
+                <li><a href="/profile">Dashboard</a></li>
+                <li><a href="/records">Attendance Records</a></li>
+                <li><a href="#">Salary Records</a></li>
+                <li><a href="/leave">Leave Application</a></li>
+                <li><a href="/acc_update">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="company-name">KMC Enterprises</div>
+                <div class="account-owner">
+                    <%= Name %> <%= Surname %>
                 </div>
-                <div class="form-group">
-                    <label for="end-date">End Date:</label>
-                    <input type="date" name="end_date" id="end-date" required>
-                </div>
-                <div class="form-group">
-                    <label for="reason">Reason:</label>
-                    <textarea id="reason" name="reason" rows="4" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="apply-btn">Apply</button>
-                </div>
-            </form>
-            <%if(sent) { %>
+                <a href="/logout"><button id="logoutBtn" class="logout-btn">Logout</button></a>
+            </div>
+
+            <div class="form-container">
+                <h2>Leave Application Form</h2>
+                <form id="leave-application-form" action="/apply" method="post">
+                    <div class="form-group">
+                        <label for="start-date">Start Date:</label>
+                        <input type="date" name="start_date" id="start-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="end-date">End Date:</label>
+                        <input type="date" name="end_date" id="end-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Reason:</label>
+                        <textarea id="reason" name="reason" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="apply-btn">Apply</button>
+                    </div>
+                </form>
+                <% if (sent) { %>
                 <script>
-                    // Display an alert when the success flag is true
                     alert('Leave application successfully sent!');
                 </script>
-              <% } %>
+                <% } %>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

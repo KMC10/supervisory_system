@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Employee Information</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+            integrity="sha384-o+X3bCGV4JMiXa00BOIqYvB2l5g60CzfG/A9rlJ6vkkYLGi9WxlkGb62aJn+eii"
+            crossorigin="anonymous">
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .account-owner {
+            font-size: 18px;
+        }
+
+        .logout-btn {
+            padding: 8px 16px;
+            background-color: red;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-bottom: 10px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        button:disabled {
+            background-color: navy;
+            color: white;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="sidebar">
+                <h2>Employee Menu</h2>
+                <ul>
+                    <li><a href="/profile">Dashboard</a></li>
+                    <li><a href="/records">Attendance Records</a></li>
+                    <li><a href="#">Salary Records</a></li>
+                    <li><a href="/leave">Leave Application</a></li>
+                    <li><a href="/acc_update">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="header">
+                    <div class="company-name">KMC Enterprises</div>
+                    <div class="account-owner">
+                        <%= Name %> <%= Surname %>
+                    </div>
+                    <a href="/logout"><button id="logoutBtn"
+                            class="logout-btn">Logout</button></a>
+                </div>
+
+                <h1>Employee Information</h1>
+                <form action="/update" method="post">
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <td><input type="text" name="id"
+                                    value="<%= employee.id %>" readonly></td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td><input type="text" name="name"
+                                    value="<%= employee.Name %>"></td>
+                        </tr>
+                        <tr>
+                            <th>Surname</th>
+                            <td><input type="text" name="surname"
+                                    value="<%= employee.Surname %>"></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><input type="email" name="email"
+                                    value="<%= employee.Email %>"></td>
+                        </tr>
+                        <tr>
+                            <th>Department</th>
+                            <td><input type="text" name="department"
+                                    value="<%= employee.Department %>"
+                                    disabled></td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td><input type="text" name="phone"
+                                    value="<%= employee.Phone %>"></td>
+                        </tr>
+                        <tr>
+                            <th>Birthday</th>
+                            <td><input type="text" name="birthday"
+                                    value="<%= employee.Birthday.toISOString().split('T')[0] %>"
+                                    disabled></td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td><input type="text" name="address"
+                                    value="<%= employee.Address %>"></td>
+                        </tr>
+                        <!-- Add more fields as needed -->
+                    </table>
+                    <div style="text-align: center;">
+                        <button type="submit" class="button">Update
+                            Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+
+            fetch('/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Update successful');
+                    // Redirect to the home page (or wherever you want) after the update
+                    // window.location.href = '/';
+                } else {
+                    alert('Update failed: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+    </body>
+</html>
