@@ -35,7 +35,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
-const port = 5000;
+const port = 3306;
 app.set('view engine', 'ejs');
 app.set('views', 'path/to/views/directory');
 
@@ -187,9 +187,9 @@ handleLogin(username, password);
 
 // MySQL database connection setup
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'kunjani411021348',
+  host: 'az900.mysql.database.azure.com',
+  user: 'KMC',
+  password: 'kunjani411021348.',
   database: 'kmc_company'
 });
 
@@ -1443,4 +1443,4 @@ app.get('/getAttendanceData', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
-open(`http://localhost:${port}`);
+//open(`http://localhost:${port}`);
